@@ -1,0 +1,76 @@
+<div
+    class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto"
+    cdkScrollable>
+    
+    <!-- Header -->
+    <div class="relative flex-0 py-8 px-4 sm:p-16 overflow-hidden bg-gray-800 dark">
+        <!-- Background - @formatter:off -->
+        <!-- Rings -->
+        <svg class="absolute inset-0 pointer-events-none"
+             viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+            <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+                <circle r="234" cx="196" cy="23"></circle>
+                <circle r="234" cx="790" cy="491"></circle>
+            </g>
+        </svg>
+        <!-- @formatter:on -->
+        <div class="z-10 relative flex flex-col items-center">
+            <h2 class="text-xl font-semibold">Elite Afrique</h2>
+            <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
+                Elite Afrique , l'elite des formations au Burkina Faso
+            </div>
+            <div class="max-w-2xl mt-6 sm:text-2xl text-center tracking-tight text-secondary">
+                Les différentes sessions de formation en cours
+            </div>
+        </div>
+    </div>
+
+    
+<!-- Main -->
+<div class="flex flex-auto p-6 sm:p-10">
+        <ng-container>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 sm:mt-10">
+                    <ng-container *ngFor="let course of data; ">
+                            <!-- Card #38 -->
+                            <fuse-card class="flex flex-col max-w-80 w-full p-8 filter-info">
+                                <div class="text-2xl font-semibold leading-tight">{{course.libelle}}</div>
+                                <div class="mt-4">
+                                    {{course.description}}
+                                </div>
+                                <hr class="w-full border-t my-6">
+                                <div class="flex flex-col">
+                                    <div class="flex items-center">
+                                        <mat-icon
+                                            class="icon-size-5 mr-3"
+                                            [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                        <span class="leading-none">{{course.nom}}</span>
+                                    </div>
+                                    <div class="flex items-center mt-4">
+                                        <mat-icon
+                                            class="icon-size-5 mr-3"
+                                            [svgIcon]="'heroicons_solid:cash'"></mat-icon>
+                                        <span class="leading-none">{{course.prix}} Fcfa</span>
+                                    </div>
+                                    <div class="flex items-center mt-4">
+                                        <mat-icon
+                                            class="icon-size-5 mr-3"
+                                            [svgIcon]="'heroicons_solid:cake'"></mat-icon>
+                                        <span class="leading-none">{{course.date_debut}} au {{course.date_fin}}</span>
+                                    </div>
+                                </div>
+                                <button
+                                    class="px-6 mt-8 bg-primary"
+                                    mat-flat-button
+                                    [color]="'primary'"
+                                    [routerLink]="['./']">
+                                    S'inscrire
+                                </button>
+                            </fuse-card>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </div>  
+</div>
+
+
+

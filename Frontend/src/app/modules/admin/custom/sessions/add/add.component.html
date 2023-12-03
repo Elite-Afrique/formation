@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>{{action=='new'?'Ajouter une session':'Modifier la session '+session.libelle}}</h2>
+<div mat-dialog-content class="  sm:p-6 w-200">
+
+    <form class=" " [formGroup]="sessionForm">
+        <div class="flex flex-col w-full ">
+
+            <div class="flex">
+                <mat-form-field class="w-4/5 pr-2">
+                    <mat-label>Session</mat-label>
+                    <input matInput [formControlName]="'libelle'" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Date de début</mat-label>
+                    <input type="date" matInput [formControlName]="'date_debut'" required>
+                </mat-form-field>
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Date de fin</mat-label>
+                    <input type="date" matInput [formControlName]="'date_fin'" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-4/5 pr-2">
+                    <mat-label>Localite</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                                <mat-select [formControlName]="'idProvince'" required>
+                                    <mat-option *ngFor="let provinces of province" [value]="provinces.id">{{provinces.nom}}</mat-option>
+                                </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="flex">
+                <mat-form-field class="w-4/5 pr-2">
+                    <mat-label>Formation</mat-label>
+                    <mat-icon matPrefix class="hidden sm:flex icon-size-5"
+                                [svgIcon]="'heroicons_solid:book-open'"></mat-icon>
+                    <mat-select [formControlName]="'idFormation'" required>
+                        <mat-option *ngFor="let formations of formation" [value]="formations.id">{{formations.libelleFormation}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Annuler</button>
+    <button mat-button (click)="onSubmit()" [disabled]="!sessionForm.valid">
+        {{action=='new'?'Enregister':'Modifier'}}</button>
+</div>

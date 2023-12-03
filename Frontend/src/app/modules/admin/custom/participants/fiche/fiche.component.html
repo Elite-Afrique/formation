@@ -1,0 +1,208 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between pr-6 pl-6 pt-1 pb-1   sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500" [routerLink]="['/dashboards/project']" routerLinkActive="router-link-active">Tableau de board</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="whitespace-nowrap text-primary-500" [routerLink]="['/custom/participants']" routerLinkActive="router-link-active">Participants</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-default-500">{{id}}</a>
+                </div>
+            </div>
+            <!-- Title -->
+        </div>
+    </div>
+    <!-- Main -->
+    <div class="flex-auto p-6  pt-6">
+
+
+        <!-- CONTENT GOES HERE -->
+        <div class="border-dashed border-gray-300 rounded-2xl mt-10">
+
+            <!-- Card #25 -->
+            <fuse-card class="flex flex-col max-w-300 w-full px-8 pt-6 pb-4 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-semibold leading-tight">Informations personnelles</div>
+                     <!-- Actions -->
+                     <div class="flex items-center ml-auto mb-1">
+                        <button
+                            mat-stroked-button
+                            (click)="edit()">
+                            <mat-icon
+                                class="icon-size-5"
+                                [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
+                            <span class="ml-2">Modifier</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-5">
+                    <div class="flex flex-col w-full ">
+                        <!-- Avatar -->
+                    <div class="flex items-center justify-center w-32 h-32 rounded-full overflow-hidden ring-4 ring-bg-card">
+                        <img
+                            class="object-cover w-full h-full"
+                            *ngIf="participant.photo"
+                            [src]=" imagepath + participant.photo">
+                        
+                    </div>
+                        <div class="flex mb-3 mt-5">
+                            <div class="w-1/3 pr-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Nom : </mat-label>
+                                <mat-label class="w-1/2">{{participant.name}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Prenom : </mat-label>
+                                <mat-label class="w-1/2">{{participant.prenom}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pr-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Genre : </mat-label>
+                                <mat-label class="w-1/2">{{participant.genre}}</mat-label>
+                            </div>
+                        </div>
+
+                        <div class="flex mb-3 mt-3">
+                            <div class="w-1/3 pr-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Profession : </mat-label>
+                                <mat-label class="w-1/2">{{participant.profession}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Contact : </mat-label>
+                                <mat-label class="w-1/2">{{participant.contact}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Email : </mat-label>
+                                <mat-label class="w-1/2">{{participant.email}}</mat-label>
+                            </div>
+                        </div>
+
+                        <div class="flex mb-3 mt-3">
+                            <div class="w-1/3 pr-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Date_naissance : </mat-label>
+                                <mat-label class="w-1/2">{{participant.date_naissance}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Lieu_naissance : </mat-label>
+                                <mat-label class="w-1/2">{{participant.lieu_naissance}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Pays_naissance : </mat-label>
+                                <mat-label class="w-1/2">{{participant.Pays_naissance}}</mat-label>
+                            </div>
+                        </div>
+
+                        <div class="flex mb-3 mt-3">
+                            <div class="w-1/3 pr-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Numero du cnib : </mat-label>
+                                <mat-label class="w-1/2">{{participant.numero_cnib}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Date d'établissement : </mat-label>
+                                <mat-label class="w-1/2">{{participant.date_etablissement}}</mat-label>
+                            </div>
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Lieu d'établissement : </mat-label>
+                                <mat-label class="w-1/2">{{participant.lieu_etablissement}}</mat-label>
+                            </div>
+                        </div>
+                        <div class="flex mb-3 mt-3">
+                            
+                            <div class="w-1/3 pl-2 flex">
+                                <mat-label class="w-1/2 text-l font-semibold leading-tight">Dernier Diplome : </mat-label>
+                                <mat-label class="w-1/2">{{participant.dernier_diplome}}</mat-label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </fuse-card>
+            <!-- Card #25 -->
+            <fuse-card class="flex flex-col max-w-300 w-full px-8 pt-6 pb-4 filter-list mt-6">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-semibold leading-tight">Formations</div>
+                    <!-- <div class="-mr-3">
+                        <button mat-icon-button (click)="edit()">
+                            <mat-icon
+                                class="icon-size-5"
+                                [svgIcon]="'heroicons_solid:plus'"></mat-icon>
+                        </button>
+                    </div> -->
+                    <!-- Add participant button -->
+                    <button
+                        class="ml-4"
+                        mat-flat-button
+                        [color]="'primary'"
+                        (click)="addPartSession()">
+                        <mat-icon [svgIcon]="'heroicons_outline:plus'"></mat-icon>
+                         <span class="ml-2 mr-1">Ajouter</span>
+                    </button>
+                </div>
+                <div class="flex flex-col mt-5">
+                    <div class="flex flex-col w-full ">
+
+
+                        <table mat-table [dataSource]="data" class="mat-elevation-z1 w-full">
+                            <ng-container matColumnDef="id">
+                                <th mat-header-cell *matHeaderCellDef> No. </th>
+                                <td mat-cell *matCellDef="let element" [routerLink]="['/custom/formations/',element.id]">{{element.id}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="formation">
+                                <th mat-header-cell *matHeaderCellDef> Formations </th>
+                                <td mat-cell *matCellDef="let element" [routerLink]="['/custom/formations/',element.id]"> <label>{{element.libelleFormation}} </label> </td>
+                            </ng-container>
+                            <ng-container matColumnDef="session">
+                                <th mat-header-cell *matHeaderCellDef> Session </th>
+                                <td mat-cell *matCellDef="let element"> {{element.libelle}}</td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="periode">
+                                <th mat-header-cell *matHeaderCellDef> Periode </th>
+                                <td mat-cell *matCellDef="let element"> {{element.date_debut}} au {{element.date_fin}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="status">
+                                <th mat-header-cell *matHeaderCellDef> Status </th>
+                                <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="actions">
+                                <th mat-header-cell *matHeaderCellDef class="mdd2"> Actions </th>
+
+                                <td mat-cell *matCellDef="let element" class="text-justify">
+                                    <div class="ml-2 -mt-2 -mr-3">
+                                        <button mat-icon-button [matMenuTriggerFor]="featuresMenu">
+                                            <mat-icon
+                                                class="icon-size-5"
+                                                [svgIcon]="'heroicons_solid:dots-vertical'"></mat-icon>
+                                        </button>
+                                        <mat-menu #featuresMenu="matMenu">
+                                            <button mat-menu-item>Archiver</button>
+                                            <button mat-menu-item (click)="valider(element.id, participant.id)">Valider</button>
+                                            <button mat-menu-item (click)="getAttestation(element.id, participant.id)">Générer Attestation</button>
+                                        </mat-menu>
+                                    </div>
+
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let element;let row; columns: displayedColumns;"></tr>
+                        </table>
+
+
+                    </div>
+                </div>
+
+            </fuse-card>
+
+        </div>
+
+    </div>
+
+</div>

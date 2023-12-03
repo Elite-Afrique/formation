@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Ajouter une Session de formation</h2>
+<div mat-dialog-content class="  sm:p-6 w-200">
+    <form class=" " [formGroup]="psessionForm">
+        <div class="flex flex-col w-full ">
+            <div class="flex">
+                <mat-form-field class="w-4/5 pl-2">
+                    <mat-label>Ajouter un participant a une liste de diffusion</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:book open'"></mat-icon>
+                    <mat-select [formControlName]="'idParticipant'" required>
+                        <mat-option *ngFor="let participants of participant" [value]="participants.id">{{participants.name}} {{participants.prenom}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>   
+        </div>
+    </form>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Annuler</button>
+    <button mat-button (click)="onSubmit()" [disabled]="!psessionForm.valid">Ajouter</button>
+</div>
+

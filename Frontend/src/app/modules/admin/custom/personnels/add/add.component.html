@@ -1,0 +1,101 @@
+<h2 mat-dialog-title>{{action=='new'?'Ajouter un personnel':'Modifier le personnel '+personnel.name+' '+personnel.prenom}}</h2>
+<div mat-dialog-content class="  sm:p-6 w-200">
+
+    <form class=" " [formGroup]="personnelForm">
+        <div class="flex flex-col w-full ">
+            <div class="flex">
+                <div class="relative flex items-center justify-center w-32 h-32 rounded-full overflow-hidden ring-4 ring-bg-card">
+                    <img class="object-cover w-full h-full" [src]="url">
+                </div> 
+            </div>
+            <div class="flex mt-5">
+                <input type="file" (change)="onselectFiles($event)">
+            </div>   
+            <div class="flex mt-8">
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Nom</mat-label>
+                    <mat-icon matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                    <input matInput [formControlName]="'name'" required>
+                </mat-form-field>
+                
+                <mat-form-field class="w-2/5 pl-2">
+                    <mat-label>Prénom(s)</mat-label>
+                    <mat-icon matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                    <input matInput [formControlName]="'prenom'" required>
+                </mat-form-field>
+                <mat-form-field class="w-1/5 pl-2">
+                    <mat-label>Genre</mat-label>
+                    <mat-select [formControlName]="'genre'" required>
+                        <mat-option [value]="'HOMME'">HOMME</mat-option>
+                        <mat-option [value]="'FEMME'">FEMME</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="flex mt-5">
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Contact</mat-label>
+                    <mat-icon 
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_outline:phone'"></mat-icon>
+                    <input matInput [formControlName]="'contact'" required>
+                </mat-form-field>
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Adresse</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
+                    <input matInput [formControlName]="'adresse'" required>
+                </mat-form-field>
+                <mat-form-field class="w-1/5 pl-2">
+                    <mat-label>Fonction</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:briefcase'"></mat-icon>
+                    <mat-select [formControlName]="'idFonction'" required>
+                        <mat-option *ngFor="let fonctions of fonction" [value]="fonctions.id">{{fonctions.libelleFonction}}</mat-option>
+                    </mat-select>
+                </mat-form-field>     
+            </div>
+
+            <div class="flex mt-5">
+                <mat-form-field class="w-2/5">
+                    <mat-label>E-mail</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:mail'"></mat-icon>
+                    <input matInput [formControlName]="'email'" required>
+                </mat-form-field>
+
+                <mat-form-field class="w-2/5 pl-2">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" [formControlName]="'password'" required>
+                </mat-form-field>
+                <mat-form-field class="w-1/5 pl-2">
+                    <mat-label>Role</mat-label>
+                    <mat-select [formControlName]="'idRole'" required>
+                        <mat-option *ngFor="let roles of role" [value]="roles.id">{{roles.libelleRole}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        <div class="flex">
+            
+            
+        </div>
+    </div>  
+    </form>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Annuler</button>
+    <button mat-button (click)="onSubmit()" [disabled]="!personnelForm.valid">
+        {{action=='new'?'Enregister':'Modifier'}}</button>
+</div>

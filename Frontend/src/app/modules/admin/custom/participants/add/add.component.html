@@ -1,0 +1,136 @@
+<h2 mat-dialog-title>{{action=='new'?'Ajouter un participant':'Modifier le participant '+participant.name+' '+participant.prenom}}</h2>
+<div mat-dialog-content class="  sm:p-6 w-200">
+
+
+    <form class=" " [formGroup]="participantForm">
+        <div class="flex flex-col w-full ">
+            <div class="flex">
+                <div class="relative flex items-center justify-center w-32 h-32 rounded-full overflow-hidden ring-4 ring-bg-card">
+                    <img class="object-cover w-full h-full" [src]="url">
+                </div>
+            </div>
+            <div class="flex mt-5">
+                <input type="file" (change)="onselectFiles($event)">
+            </div>
+            <div class="flex mt-8">
+                <mat-form-field class="w-3/5 pr-2">
+                    <mat-label>Nom</mat-label>
+                    <mat-icon matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                    <input matInput formControlName="name" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Prénom(s)</mat-label>
+                    <mat-icon matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:user-circle'"></mat-icon>
+                    <input matInput formControlName="prenom" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Genre</mat-label>
+                    <mat-select [formControlName]="'genre'" required>
+                        <mat-option [value]="'HOMME'">HOMME</mat-option>
+                        <mat-option [value]="'FEMME'">FEMME</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-3/5 pr-2">
+                    <mat-label>Contact</mat-label>
+                    <mat-icon 
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_outline:phone'"></mat-icon>
+                    <input matInput formControlName="contact" required>
+                </mat-form-field>
+
+                <mat-form-field class="w-3/5">
+                    <mat-label>E-mail</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:mail'"></mat-icon>
+                    <input matInput formControlName="email" required>
+                </mat-form-field>
+
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput formControlName="password" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Date naissance</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:cake'"></mat-icon>
+                    <input type="date" matInput formControlName="date_naissance" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Lieu naissance</mat-label>
+                    <!-- <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:cake'"></mat-icon> -->
+                    <input  matInput formControlName="lieu_naissance" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Pays de naissance</mat-label>
+                    <!-- <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:cake'"></mat-icon> -->
+                    <input matInput formControlName="Pays_naissance" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Date d'établissement</mat-label>
+                    <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:cake'"></mat-icon>
+                    <input type="date" matInput formControlName="date_etablissement" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Lieu établissement</mat-label>
+                    <!-- <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:cake'"></mat-icon> -->
+                    <input  matInput formControlName="lieu_etablissement" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Numero du cnib</mat-label>
+                    <!-- <mat-icon
+                        matPrefix
+                        class="hidden sm:flex icon-size-5"
+                        [svgIcon]="'heroicons_solid:cake'"></mat-icon> -->
+                    <input matInput formControlName="numero_cnib" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-3/5">
+                    <mat-label>Profession</mat-label>
+                    <input matInput formControlName="profession" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Dernier diplôme</mat-label>
+                    <input matInput formControlName="dernier_diplome" required>
+                </mat-form-field>
+                <mat-form-field class="w-3/5 pl-2">
+                    <mat-label>Adresse</mat-label>
+                    <input matInput formControlName="adresse" required>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Annuler</button>
+    <button mat-button (click)="onSubmit()" [disabled]="!participantForm.valid">
+        {{action=='new'?'Enregister':'Modifier'}}</button>
+</div>

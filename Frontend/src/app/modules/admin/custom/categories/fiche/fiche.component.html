@@ -1,0 +1,61 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between pr-6 pl-6 pt-1 pb-1   sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500" [routerLink]="['/dashboards/project']" routerLinkActive="router-link-active">Tableau de board</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="whitespace-nowrap text-primary-500" [routerLink]="['/custom/participants']" routerLinkActive="router-link-active">Categories</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon class="icon-size-5 text-secondary" [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-default-500">{{id}}</a>
+                </div>
+            </div>
+            <!-- Title -->
+        </div>
+    </div>
+    <!-- Main -->
+    <div class="flex-auto p-6  pt-6">
+
+
+        <!-- CONTENT GOES HERE -->
+        <div class="border-dashed border-gray-300 rounded-2xl mt-10">
+
+            <!-- Card #25 -->
+            <fuse-card class="flex flex-col max-w-300 w-full px-8 pt-6 pb-4 filter-list">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-semibold leading-tight">Informations sur la Categorie</div>
+                     <!-- Actions -->
+                     <div class="flex items-center ml-auto mb-1">
+                        <button
+                            mat-stroked-button
+                            (click)="edit()">
+                            <mat-icon
+                                class="icon-size-5"
+                                [svgIcon]="'heroicons_solid:pencil-alt'"></mat-icon>
+                            <span class="ml-2">Modifier</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-col mt-5">
+                    <div class="flex flex-col w-full ">   
+                        <div class="flex mb-3">
+                            <div class="w-1/3 pr-2 flex">
+                                <mat-label class="w-1/2">Nom de la categorie : </mat-label>
+                                <mat-label class="w-1/2">{{categorie.libelleCategorie}}</mat-label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </fuse-card>
+        </div>
+
+    </div>
+
+</div>

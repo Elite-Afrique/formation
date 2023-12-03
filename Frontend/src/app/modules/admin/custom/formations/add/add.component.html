@@ -1,0 +1,63 @@
+<h2 mat-dialog-title>{{action=='new'?'Ajouter un formation':'Modifier la formation '+formation.libelleFormation}}</h2>
+<div mat-dialog-content class="  sm:p-6 w-200">
+
+    <form class=" " [formGroup]="formationForm">
+        <div class="flex flex-col w-full ">
+            <div class="flex">
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Nom</mat-label>
+                    <input matInput [formControlName]="'libelleFormation'" required>
+                </mat-form-field>
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Volume Horaire</mat-label>
+                    <input matInput [formControlName]="'volume_horaire'" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Nombre de module</mat-label>
+                    <input matInput [formControlName]="'nombre_module'" required>
+                </mat-form-field>
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Durée de la formation</mat-label>
+                    <input matInput [formControlName]="'duree_formation'" required>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field class="w-2/5 pr-2">
+                    <mat-label>Prix</mat-label>
+                    <input matInput [formControlName]="'prix'" required>
+                </mat-form-field>
+                <mat-form-field class="w-2/5 pl-2">
+                    <mat-label>Categorie</mat-label>
+                    <mat-select [formControlName]="'idCategorie'" required>
+                        <mat-option *ngFor="let categories of categorie" [value]="categories.id">{{categories.libelleCategorie}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
+                <div class="mt-8">
+                    <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
+                        <mat-label>Description</mat-label>
+                        <mat-icon
+                            matPrefix
+                            class="hidden sm:flex icon-size-5"
+                            [svgIcon]="'heroicons_solid:menu-alt-2'"></mat-icon>
+                        <textarea
+                            matInput
+                            [formControlName]="'description'"
+                            [placeholder]="'description'"
+                            [rows]="5"
+                            [spellcheck]="false"
+                            matTextareaAutosize></textarea>
+                    </mat-form-field>
+                </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Annuler</button>
+    <button mat-button (click)="onSubmit()" [disabled]="!formationForm.valid">
+        {{action=='new'?'Enregister':'Modifier'}}</button>
+</div>
+
